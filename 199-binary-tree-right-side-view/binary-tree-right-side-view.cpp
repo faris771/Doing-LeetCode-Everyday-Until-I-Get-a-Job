@@ -17,6 +17,7 @@ public:
 
         if(!root)
             return ans;
+            
         queue<TreeNode*> q;
         q.push(root);
 
@@ -32,8 +33,8 @@ public:
                 q.pop();
 
                 if(node){
-                    q.push(node->left);
-                    q.push(node->right);
+                    if (node->left) q.push(node->left);
+                    if (node->right) q.push(node->right);
                     rightMost = node->val;
                 }    
 
@@ -43,24 +44,10 @@ public:
             ans.push_back(rightMost);
 
         }
-        ans.pop_back();
         
         
         return ans;
     }
 
-    // void dfs(TreeNode* root){
-    //     if(!root)
-    //         return;
-    //     int currentVal = root->val;
-
-    //     if(currentVal> maxVal){
-    //         maxVal = currentVal;
-    //         ans.push_back(currentVal);
-    //     }
-
-    //     rightSideView(root->right);
-    //     rightSideView(root->left);
-
-    // }
+   
 };
